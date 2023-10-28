@@ -51,7 +51,7 @@ public class Principal extends Application { // Classe Principal que herda da cl
     primaryStage.setScene(scene); // Adiciona a cena princiapl aA janela
     primaryStage.setResizable(false); // Janela nao redimensionavel
     primaryStage.centerOnScreen(); // Janela inicia no centro da tela
-    primaryStage.getIcons().add(new Image("icon.jpg")); // Icone do aplicativo
+    primaryStage.getIcons().add(new Image("filosofo4.png")); // Icone do aplicativo
     primaryStage.show(); // Apresenta a janela
     // Fim da instancia da tela Principal
 
