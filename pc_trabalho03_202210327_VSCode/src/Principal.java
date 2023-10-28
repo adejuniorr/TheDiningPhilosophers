@@ -99,97 +99,100 @@ public class Principal extends Application { // Classe Principal que herda da cl
       double y = 230 * Math.sin(Math.toRadians(angle)) + 210;
       // Fim do calculo de posicao
 
-      Pane paneFilosofo = createPhilosopherPane(i, x, y); // Painel de filosofo (criado pelo metodo createPhilosopherPane())
+      // Estrutura da GUI de cada filosofo (filosofos e seus paineis ao lado esquerdo e seus controles na parte inferior da tela)
+      Pane paneFilosofo = createPhilosopherPane(i, x, y); // Painel de filosofo (criado pelo metodo createPhilosopherPane() com o id e as posicoes de cada filosofo calculadas anteriormente)
       VBox filosofoVBox = styledControlVBox("Controle do Filósofo " + i); // VBox de controle de cada filosofo (criada pelo metodo styledControlVBox())
 
       HBox botoes = new HBox(); // HBox principal dos botoes e sliders contidos na VBox de controle de cada filosofo
       // Estilizacao da HBox de botoes
       botoes.styleProperty().set("-fx-spacing: 15px; -fx-padding: 5px; -fx-border-width: 2px; -fx-border-color: #d6ae69;");
       
-      playOrPauseBTNs[i] = styledButton("Pause", 1, 0); // Botao Play/Pause (inicia no valor "Pause" - filosofo rodando, clique para pausar)
-      playOrPauseBTNs[i].translateYProperty().set(30); // Posicionamento do botao Play/Pause (mais ao centro do eixo Y)
+      // Botoes Play/Pause de cada filosofo (inicia no valor "Pause" - filosofo rodando, clique para pausar)
+      playOrPauseBTNs[i] = styledButton("Pause", 1, 0); 
+      playOrPauseBTNs[i].translateYProperty().set(30); // Posicionamento de cada botao Play/Pause (mais ao centro do eixo Y)
 
       VBox botoesVel = new VBox(); // VBox de sliders de controle ae velocidade pensar/comer
-      // Estilizacao da VBox de sliders (alinhamento ao centro)
-      botoesVel.styleProperty().set("-fx-alignment: center;");
+      botoesVel.styleProperty().set("-fx-alignment: center;"); // Estilizacao da VBox de sliders (alinhamento ao centro)
 
-      VBox velBtnField1 = new VBox(); // HBox de campo de botao de velocidade "pensando"
-      Label velThinkText = new Label("Vel. Pensar"); // Texto de velocidade "pensando"
-      velThinkText.styleProperty()
-          .set("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-text-alignment: center;"); // Estilo
-                                                                                                                // do
-                                                                                                                // texto
-                                                                                                                // de
-                                                                                                                // velocidade
-                                                                                                                // "pensando"
+      VBox velBtnField1 = new VBox(); // VBox de controle de velocidade "pensar"
+      Label velThinkText = new Label("Vel. Pensar"); // Titulo da VBox de controle "pensar"
+      // Estilizacao do titulo da VBox
+      velThinkText.styleProperty().set("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-text-alignment: center;");
 
-      velSliderThinking[i] = createStyledSlider(1, 10, 5); // Botao de aumentar velocidade "pensando"
-      // velSliderThinking[i].setValue(5);
+      // Slider de controle de velocidade "pensar"
+      velSliderThinking[i] = createStyledSlider(1, 10, 5); 
 
-      velBtnField1.getChildren().addAll(velThinkText, velSliderThinking[i]); // Adiciona os botoes de velocidade na HBox
-                                                                             // de campo de botoes de velocidade
+      velBtnField1.getChildren().addAll(velThinkText, velSliderThinking[i]); // Adiciona o titulo e o slider de velocidade "pensar" na VBox de controle
 
-      VBox velBtnField2 = new VBox(); // HBox de campo de botao de velocidade "comendo"
-      Label velEatText = new Label("Vel. Comer"); // Texto de velocidade "comendo"
-      velEatText.styleProperty()
-          .set("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-text-alignment: center;"); // Estilo
-                                                                                                                // do
-                                                                                                                // texto
-                                                                                                                // de
-                                                                                                                // velocidade
-                                                                                                                // "comendo"
+      VBox velBtnField2 = new VBox(); // VBox de controle de velocidade "comer"
+      Label velEatText = new Label("Vel. Comer"); // Titulo da VBox de controle "comer"
+      // Estilizacao do titulo da VBox
+      velEatText.styleProperty().set("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-text-alignment: center;");
 
-      velSliderEating[i] = createStyledSlider(1, 10, 5); // Botao de diminuir velocidade "comendo"
-      // velSliderEating[i].setValue(5);
+      // Slider de controle de velocidade "comer"
+      velSliderEating[i] = createStyledSlider(1, 10, 5);
 
-      velBtnField2.getChildren().addAll(velEatText, velSliderEating[i]); // Adiciona os botoes de velocidade na HBox de
-                                                                         // campo de botoes de velocidade
+      velBtnField2.getChildren().addAll(velEatText, velSliderEating[i]); // Adiciona o titulo e o slider de velocidade "comer" na VBox de controle
 
-      botoesVel.getChildren().addAll(velBtnField1, velBtnField2); // Adiciona os botoes na HBox de botoes
-      botoes.getChildren().addAll(playOrPauseBTNs[i], botoesVel); // Adiciona os botoes na VBox de botoes
-      filosofoVBox.getChildren().add(botoes);
+      botoesVel.getChildren().addAll(velBtnField1, velBtnField2); // Adiciona as VBox de controle de cada velocidade na VBox de controle de velocidades geral
+      botoes.getChildren().addAll(playOrPauseBTNs[i], botoesVel); // Adiciona o botao Play/Pause e a VBox de controle de velocidades na HBox principal de botoes
+      filosofoVBox.getChildren().add(botoes); // Adiciona a HBox principal de botoes na VBox de controle de cada filosofo (botoes ficam abaixo do titulo da VBox)
 
-      leftPane.getChildren().addAll(paneFilosofo); // Adiciona o painel do filosofo no painel esquerdo principal
-      bottomHBox.getChildren().addAll(filosofoVBox); // Adiciona a VBox de controle do filosofo na HBox inferior
+      leftPane.getChildren().addAll(paneFilosofo); // Adiciona o painel de cada filosofo no painel esquerdo principal
+      bottomHBox.getChildren().addAll(filosofoVBox); // Adiciona a VBox de controle de cada filosofo na HBox inferior
 
-      filosofos[i] = new Filosofo(paneFilosofo, i); // Instancia cada filosofo
-      filosofos[i].setThinkVelocity(5);
-      filosofos[i].setEatVelocity(5);
-      filosofos[i].start(); // Inicia cada filosofo
+      // Instancia dos Filosofos/Threads
+      filosofos[i] = new Filosofo(paneFilosofo, i);
+      filosofos[i].setThinkVelocity(5); // Velocidade de pensar padrao/inicial
+      filosofos[i].setEatVelocity(5); // Velocidade de comer padrao/inicial
+      filosofos[i].start(); // Inicia cada Thread ja ao iniciar a Aplicacao JavaFX
 
-      s[i] = new Semaphore(0); // Inicializa o semaforo de cada filosofo
-    }
+      s[i] = new Semaphore(0); // Inicializa os semaforos de cada filosofo para o controle na IPC
+    } // Fim do loop de configuracao dos filosofos
 
-    // Eventos
+    // Configuracoes de Botoes/Sliders e Eventos de Botoes/Sliders
     Button resetBTN = (Button) mainRVBox.getChildren().get(2); // Botao de resetar a simulacao
-    // boolean[] wasReset = new boolean[N];
 
-    resetBTN.onMouseClickedProperty().set(e -> {
-      System.out.println("Simulação resetada!");
-      for (int i = 0; i < N; i++) {
-        s[i] = new Semaphore(0); // Reinicializa o semaforo de cada filosofo
-        if (playOrPauseBTNs[i].getText().equals("Play")) {
-          playOrPauseBTNs[i].fireEvent(e); // Inicia cada filosofo
+    /**
+     * *************************************************************
+     * Evento/Propriedade: onMouseClicked
+     * Funcao: identifica qualquer clique sobre o botao de resetar a simulacao
+     * Parametros/set: e (instancia de MouseEvent)
+     * Retorno: nao retorna valores
+     ***************************************************************
+     * @param e
+     */
+    resetBTN.onMouseClickedProperty().set(e -> { // A cada evento de clique do botao de resetar a simulacao
+      System.out.println("Simulação resetada!"); // Mensagem de log (controle de execucao sem GUI)
+      
+      for (int i = 0; i < N; i++) { // Loop para resetar CONFIGURACOES de cada filosofo
+        s[i] = new Semaphore(0); // Reseta o semaforo de cada filosofo
+        
+        if (playOrPauseBTNs[i].getText().equals("Play")) { // Se o filosofo estiver rodando no momento de click do Reset
+          playOrPauseBTNs[i].fireEvent(e); // Dispara o evento que estiver configurado para cada botao de Play/Pause (sera configurado mais abaixo)
+          /* [!] O evento para cada botao de Play/Pause refere-se ao evento de clique do botao. Dessa forma, cada o filosofo esteja rodando no
+           * momento do Reset, o evento de clique do botao de Play/Pause sera disparado, pausando o filosofo (conforme a configuracao inicial da 
+           * Aplicacao).
+           */
         }
+
         velSliderThinking[i].setValue(5); // Reinicializa o slider de velocidade de pensar
         velSliderEating[i].setValue(5); // Reinicializa o slider de velocidade de comer
-      }
+      } // Fim do loop de resetar CONFIGURACOES de cada filosofo
 
-      for (int i = 0; i < N; i++) {
-        filosofos[i].interrupt(); // Interrompe cada filosofo
-        System.out.println("Thread alive: " + filosofos[i].isInterrupted());
+      for (int i = 0; i < N; i++) { // Loop para resetar cada FILOSOFO
+        filosofos[i].interrupt(); // Interrompe a Thread Filosofo
+        System.out.println("Thread do filosofo " + i + " interrupted: " + filosofos[i].isInterrupted()); // Mensagem de log (controle de execucao sem GUI)
 
         filosofos[i] = new Filosofo(filosofos[i].getFilosofoPane(), i); // Instancia cada filosofo novamente
-        filosofos[i].setThinkVelocity(5);
-        filosofos[i].setEatVelocity(5);
-        filosofos[i].start(); // Reinicia cada filosofo
+        filosofos[i].setThinkVelocity(5); // Seta a velocidade de pensar de cada filosofo
+        filosofos[i].setEatVelocity(5); // Seta a velocidade de comer de cada filosofo
+        filosofos[i].start(); // Inicia a nova instancia de cada filosofo
 
-        System.out.println("Filósofo " + i + " resetado e reiniciado.");
-      }
-
-      for (int i = 0; i < N; i++) {
-        filosofos[i].getFilosofoPane().styleProperty()
-            .set("-fx-background-image: url('filosofo" + i + ".png'); -fx-background-repeat: no-repeat;");
+        // Redefine o painel padrao de cada filosofo (conforme a configuracao inicial da Aplicacao)
+        filosofos[i].getFilosofoPane().styleProperty().set("-fx-background-image: url('filosofo" + i + ".png'); -fx-background-repeat: no-repeat;");
+        
+        System.out.println("Filósofo " + i + " resetado e reiniciado."); // Mensagem de log (controle de execucao sem GUI)
       }
     });
 
