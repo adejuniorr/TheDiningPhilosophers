@@ -1,0 +1,16 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\fontawesomefx-commons-9.1.2.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\gson-2.10.1.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.base.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.media.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx.web.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar"
+    ]
+}
