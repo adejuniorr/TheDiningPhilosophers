@@ -2,7 +2,7 @@
 * Autor............: Ademir de Jesus Reis Junior
 * Matricula........: 202210327
 * Inicio...........: 23/10/2023
-* Ultima alteracao.: 28/10/2023
+* Ultima alteracao.: 29/10/2023
 * Nome.............: Principal.java
 * Funcao...........: Aplicacao JavaFX que simula o problema de IPC (Interprocess Comunication) "Jantar dos Filosofos"
 *************************************************************** */
@@ -46,7 +46,7 @@ public class Principal extends Application { // Classe Principal que herda da cl
   public void start(Stage primaryStage) throws Exception {
     // Instancia da tela Principal
     Pane root = new Pane(); // Painel raiz
-    Scene scene = new Scene(root, 1300, 744); // Cena principal
+    Scene scene = new Scene(root, 1300, 780); // Cena principal
 
     primaryStage.setTitle("O Jantar dos Filósofos"); // Titulo da janela
     primaryStage.setScene(scene); // Adiciona a cena princiapl aA janela
@@ -63,23 +63,23 @@ public class Principal extends Application { // Classe Principal que herda da cl
     // Elementos da HBox superior
     Pane leftPane = new Pane(); // Painel/lado esquerdo (area de visualizacao dos filosofos)
     // Edicao do painel esquerdo
-    leftPane.setPrefWidth(750); // Largura
-    leftPane.setPrefHeight(580); // Altura
+    leftPane.setPrefWidth(700); // Largura
+    leftPane.setPrefHeight(612); // Altura
     leftPane.styleProperty().set("-fx-background-image: url('background-left.jpg');"); // Imagem de fundo
     // Fim da edicao do painel esquerdo
 
     Pane rightPane = new Pane(); // Painel/lado direito (area de informacoes e botao de Reset)
     // Edicao do painel direito
-    rightPane.setPrefWidth(550); // Largura
-    rightPane.setPrefHeight(580); // Altura
-    rightPane.styleProperty().set("-fx-background-image: url('background-right.jpg');"); // Imagem de fundo
+    rightPane.setPrefWidth(600); // Largura
+    rightPane.setPrefHeight(612); // Altura
+    rightPane.styleProperty().set("-fx-background-image: url('background-right.jpg'); -fx-background-size: cover; -fx-background-repeat: no-repeat;"); // Imagem de fundo
 
     VBox mainRVBox = createRightMainVBox(); // VBox principal do painel direito (criada pelo metodo createRightMainVBox())
     rightPane.getChildren().add(mainRVBox); // Adiciona a VBox principal no painel direito
     // Fim da edicao do painel direito
 
     topHBox.getChildren().addAll(leftPane, rightPane); // Adiciona os paineis esquerdo e direito na HBox superior
-    // Fim das configs e edits dos elementos da HBox superior
+    // Fim das configuracoes e edits dos elementos da HBox superior
 
     HBox bottomHBox = new HBox(); // HBox inferior (area de controle dos filosofos - ira conter as VBoxes de controle de cada filosofo)
 
@@ -95,12 +95,12 @@ public class Principal extends Application { // Classe Principal que herda da cl
 
     for (int i = 0; i < N; i++) { // Loop para instanciar, configurar e iniciar cada filosofo e seus recursos
       // Calcula a posicao de cada filosofo na tela
-      double angle = (360 / N) * i; // Angulo seccionado pela quantidade de filosofo em relacao aA posicao circular ao redor da mesa "(360/N) * i"
+      double angle = (365 / N) * i; // Angulo seccionado pela quantidade de filosofo em relacao aA posicao circular ao redor da mesa "(360/N) * i"
       // Posicao X e Y de cada filosofo, calculada a partir do angulo multiplicado
       // pelo "raio" da mesa circular somado a um descolamento extra para melhor
       // centralizar os filosofos no lado esquerda)
-      double x = 300 * Math.cos(Math.toRadians(angle)) + 260; // Posicao X
-      double y = 200 * Math.sin(Math.toRadians(angle)) + 200; // Posicao Y
+      double x = 220 * Math.cos(Math.toRadians(angle)) + 280; // Posicao X
+      double y = -220 * Math.sin(Math.toRadians(angle)) + 220; // Posicao Y
       // Fim do calculo de posicao
 
       // Estrutura da GUI de cada filosofo (filosofos e seus paineis ao lado esquerdo
@@ -202,12 +202,12 @@ public class Principal extends Application { // Classe Principal que herda da cl
 
       for (int i = 0; i < N; i++) { // Loop para reconfigurar cada filosofo e seus respectivos recursos na GUI
         // Calcula novamente a posicao de cada filosofo na tela
-        double angle = (360 / N) * i; // Angulo seccionado pela quantidade de filosofo em relacao aA posicao circular ao redor da mesa "(360/N) * i"
+        double angle = (365 / N) * i; // Angulo seccionado pela quantidade de filosofo em relacao aA posicao circular ao redor da mesa "(360/N) * i"
         // Posicao X e Y de cada filosofo, calculada a partir do angulo multiplicado
         // pelo "raio" da mesa circular somado a um descolamento extra para melhor
         // centralizar os filosofos no lado esquerda)
-        double x = 300 * Math.cos(Math.toRadians(angle)) + 260; // Posicao X
-        double y = 200 * Math.sin(Math.toRadians(angle)) + 200; // Posicao Y
+        double x = 220 * Math.cos(Math.toRadians(angle)) + 280; // Posicao X
+        double y = -220 * Math.sin(Math.toRadians(angle)) + 220; // Posicao Y
         // Fim do calculo de posicao
 
         // Estrutura da GUI de cada filosofo (filosofos e seus paineis ao lado esquerdo
@@ -409,7 +409,7 @@ public class Principal extends Application { // Classe Principal que herda da cl
   public Pane createPhilosopherPane(int i, double x, double y) {
     Pane paneFilosofo = new Pane(); // Instancia do painel do filosofo
     paneFilosofo.styleProperty().set("-fx-background-image: url('filosofo" + i + ".png'); -fx-background-repeat: no-repeat;"); // Imagem de fundo do painel do filosofo
-    paneFilosofo.setPrefWidth(180); // Largura do painel do filosofo
+    paneFilosofo.setPrefWidth(130); // Largura do painel do filosofo
     paneFilosofo.setPrefHeight(180); // Altura do painel do filosofo
     paneFilosofo.setLayoutX(x); // Posicao X do painel do filosofo
     paneFilosofo.setLayoutY(y); // Posicao Y do painel do filosofo
@@ -432,28 +432,41 @@ public class Principal extends Application { // Classe Principal que herda da cl
 
     Label mainRTitle = new Label(); // Titulo principal do lado direito
     mainRTitle.styleProperty().set("-fx-pref-width: 530px; -fx-pref-height: 80px; -fx-alignment: center; -fx-text-fill: #fff; -fx-font-size: 30px; -fx-font-weight: bold; -fx-padding: 10px; -fx-background-image: url('mainRTitle.png'); -fx-background-repeat: no-repeat;"); // Estilo do titulo principal do lado direito
+    mainRTitle.setTranslateX(25);
     mainRTitle.setTranslateY(20); // Posicionamento Y do titulo principal do lado direito
 
     Pane mainRTextPane = new Pane(); // Texto principal do lado direito
     mainRTextPane.styleProperty().set("-fx-pref-width: 470px; -fx-pref-height: 300px; -fx-background-image: url('mainRText.png'); -fx-background-repeat: no-repeat;"); // Estilo do texto principal do lado direito
-    mainRTextPane.setTranslateX(40); // Posicionamento X do texto principal do lado direito
-    mainRTextPane.setTranslateY(40); // Posicionamento Y do texto principal do lado direito
+    mainRTextPane.setTranslateX(60); // Posicionamento X do texto principal do lado direito
+    mainRTextPane.setTranslateY(50); // Posicionamento Y do texto principal do lado direito
 
     Text mainRText = new Text("Bem-vindo(a) ao Jantar dos Filósofos!\nAcompanhe nossos pensadores enquanto\npensam e jantam ao lado.\n\nClique no botão abaixo\npara resetar a simulação e reiniciá-la!"); // Texto principal do lado direito
     mainRText.styleProperty().set("-fx-fill: #fff; -fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10px;"); // Estilo do texto principal do lado direito
     mainRText.textAlignmentProperty().set(javafx.scene.text.TextAlignment.CENTER); // Alinhamento do texto principal do lado direito
     mainRText.setTranslateX(40); // Posicionamento X do texto principal do lado direito
-    mainRText.setTranslateY(75); // Posicionamento Y do texto principal do lado direito
+    mainRText.setTranslateY(73); // Posicionamento Y do texto principal do lado direito
     DropShadow shadow = new DropShadow(); // Sombra do texto principal do lado direito
     mainRText.setEffect(shadow); // Adiciona a sombra ao texto principal do lado direito
     mainRTextPane.getChildren().add(mainRText); // Adiciona o texto principal do lado direito no painel do texto principal do lado direito
 
     Button resetBTN = styledButton("Resetar\nSimulação", 0, 180); // Botao de resetar a simulacao
     resetBTN.textAlignmentProperty().set(javafx.scene.text.TextAlignment.CENTER); // Alinhamento do texto do botao de resetar a simulacao
-    resetBTN.setTranslateX(180); // Posicionamento X do botao de resetar a simulacao
+    resetBTN.setTranslateX(210); // Posicionamento X do botao de resetar a simulacao
     resetBTN.setTranslateY(25); // Posicionamento Y do botao de resetar a simulacao
 
-    mainRVBox.getChildren().addAll(mainRTitle, mainRTextPane, resetBTN); // Adiciona o titulo principal, o texto principal e os botoes na VBox principal do lado direito
+    Text bottomRText = new Text("Abaixo você tem acesso aos controles\nde Play/Pause e Velocidade de Ação de cada filósofo!"); // Texto inferior do lado direito
+    bottomRText.styleProperty().set("-fx-fill: #fff; -fx-font-size: 15px; -fx-font-weight: bold; -fx-padding: 10px;"); // Estilo do texto inferior do lado direito
+    bottomRText.textAlignmentProperty().set(javafx.scene.text.TextAlignment.CENTER); // Alinhamento do texto inferior do lado direito
+    bottomRText.setTranslateX(120); // Posicionamento X do texto inferior do lado direito
+    bottomRText.setTranslateY(40); // Posicionamento Y do texto inferior do lado direito
+
+    Text warningText = new Text("Caso ocorra algum travamento,\nresete a simulação ou reinicie o programa."); // Texto de aviso
+    warningText.styleProperty().set("-fx-fill: #fff; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 10px;"); // Estilo do texto de aviso
+    warningText.textAlignmentProperty().set(javafx.scene.text.TextAlignment.CENTER); // Alinhamento do texto de aviso
+    warningText.setTranslateX(190); // Posicionamento X do texto de aviso
+    warningText.setTranslateY(60); // Posicionamento Y do texto de aviso
+
+    mainRVBox.getChildren().addAll(mainRTitle, mainRTextPane, resetBTN, bottomRText, warningText); // Adiciona os elementos na VBox principal do lado direito
 
     return mainRVBox; // Retorna a VBox estilizada
   } // Fim do metodo createRightMainVBox
