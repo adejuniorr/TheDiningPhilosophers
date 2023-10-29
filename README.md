@@ -12,7 +12,7 @@ Esteja convidado a testar o programa e observar na prática a mesa de nossos mes
 
 **------------------------------------------------------------------------------------------------------------------------------------------------------------**
 
-This is a programming project in the **Java** language that portrays a well-known problem in the study of Concurrent Systems: **The Philosophers' Dinner** (with some changes from the English _"TheDiningPhilosophers" - "The Dinner Philosophers" _).
+This is a programming project in the **Java** language that portrays a well-known problem in the study of Concurrent Systems: **The Philosophers' Dinner** (with some changes from the English _"TheDiningPhilosophers" - "The Dinner Philosophers"_).
 
 > The problem presented is built on a dinner table generally composed of five philosophers, five plates of food and five forks available for use.
 
